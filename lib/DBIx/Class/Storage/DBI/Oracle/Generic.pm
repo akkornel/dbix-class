@@ -325,10 +325,10 @@ sub _dbh_execute {
 }
 
 sub _dbh_execute_for_fetch {
-  #my ($self, $sth, $tuple_status, @extra) = @_;
+  #my ($self, $source, $sth, $proto_bind, $cols, $data) = @_;
 
   # DBD::Oracle warns loudly on partial execute_for_fetch failures
-  local $_[1]->{PrintWarn} = 0;
+  local $_[2]->{PrintWarn} = 0;
 
   shift->next::method(@_);
 }
